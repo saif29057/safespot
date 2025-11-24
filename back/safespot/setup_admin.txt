@@ -1,0 +1,17 @@
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+username = 'admin'
+email = 'admin@safespot.com'
+password = 'AdminSafeSpot123!'
+
+if User.objects.filter(username=username).exists():
+    print(f"❌ Le superuser '{username}' existe déjà!")
+else:
+    user = User.objects.create_superuser(username, email, password)
+    print(f"✅ Superuser créé avec succès!")
+    print(f"   Username: {username}")
+    print(f"   Email: {email}")
+    print(f"   Password: {password}")
+    print(f"\nℹ️  Accédez à: http://localhost:8000/admin/")
